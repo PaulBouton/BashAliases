@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Software
 alias upterm='source ~/.bashrc'
 alias edterm='nano ~/.bashrc'
@@ -12,6 +14,7 @@ alias bat="batcat"
 function clean_kernels() {
     dpkg -l linux-{image,headers}-"[0-9]*" | awk '/^ii/{ print $2}' | grep -v -e `uname -r | cut -f1,2 -d"-"` | grep -e '[0-9]' | xargs sudo apt-get -y purge
 }
+
 alias update_ubuntu='sudo apt update && sudo apt --with-new-pkgs upgrade -y && sudo apt autoclean -y && sudo apt autoremove --purge -y && sudo apt clean -y && sudo apt autopurge -y && sudo snap refresh'
 alias cleartrash='sudo rm -rf ~/.local/share/Trash/*/*'
 alias swap="sudo swapoff -a && sudo swapon -a"
